@@ -1,0 +1,5 @@
+<p>Captcha</p>
+
+<P *ngIf="!!captcha?.Code && !captcha?.Data">{{ captcha.Code }}</P>
+
+<img *ngIf="!!captcha?.Data" src="{{ 'data:image/png;base64,' + captcha.Data }}" alt="captcha" style="border-radius: 10px;" />

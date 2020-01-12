@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-md-6">
+
+    <div class="card">
+      <div class="card-body">
+
+        <form [formGroup]="formGroup">
+          <div class="form-group">
+            <label for="Code">Code</label>
+            <input type="text" class="form-control" id="Code" formControlName="Code">
+          </div>
+
+          <div class="form-group">
+            <label for="Title">Title</label>
+            <input type="text" class="form-control" id="Title" [formControl]="f.Title"
+              [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+            <div *ngIf="!!f.Title.errors && f.Title.touched" class="alert alert-danger">
+              <div *ngIf="f.Title.errors.required">Title is required</div>
+              <div *ngIf="f.Title.errors.maxlength">Title max lenght Error</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Description">Description</label>
+            <input type="text" class="form-control" id="Description" formControlName="Description"
+              [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+
+
+            <div *ngIf="!!f.Description.errors && f.Description.touched" class="alert alert-danger">
+              <div *ngIf="f.Description.errors.validUrl">Description is Invalid</div>
+            </div>
+          </div>
+
+
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="IsActive" formControlName="IsActive">
+            <label class="form-check-label" for="IsActive">Is Active</label>
+          </div>
+          <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+
+          <!-- [disabled]="formGroup.invalid" -->
+        </form>
+
+
+
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+
+<p>
+  {{formGroup.value |json}}
+</p>
